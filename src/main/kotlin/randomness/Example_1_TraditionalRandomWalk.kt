@@ -5,6 +5,7 @@ import org.openrndr.color.ColorRGBa
 import org.openrndr.draw.isolatedWithTarget
 import org.openrndr.draw.renderTarget
 import org.openrndr.math.Vector2
+import record
 
 fun main() = application {
     configure {
