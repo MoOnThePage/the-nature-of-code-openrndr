@@ -1,10 +1,17 @@
-# The Nature of Code OPENRNDR
+The Nature of Code OPENRNDR
+========
 
 This project is an implementation of the book **The Nature of Code** examples in OPENRNDR.
 
-## Examples Implemented:
+Features
+--------
+
 - [x] Randomness:
-  - [x] Random Walker
+  - [x] Traditional Random Walker
+  - [x] Random Number Distribution
+  - [x] Gaussian Distribution
 
+License
+-------
 
-I hop you find it useful! Thanks 😊
+The project is licensed under the MIT license.
