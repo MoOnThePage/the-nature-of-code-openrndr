@@ -10,6 +10,7 @@ Features
   - [x] Traditional Random Walker
   - [x] Random Number Distribution
   - [x] Gaussian Distribution
+  - [x] Perlin Noise
 
 License
 -------

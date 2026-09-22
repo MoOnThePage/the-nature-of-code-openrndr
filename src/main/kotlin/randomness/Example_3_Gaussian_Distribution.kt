@@ -17,7 +17,7 @@ fun main() = application {
         val generator = Random()
         val points = mutableListOf<Vector2>()
 
-        record() // record 26 second by default
+//        record() // record 26 seconds by default
         extend {
             val gaussianValue = generator.nextGaussian().toFloat()
             val standardDeviation = 60.0f
