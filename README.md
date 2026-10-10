@@ -11,6 +11,10 @@ Features
   - [x] Random Number Distribution
   - [x] Gaussian Distribution
   - [x] Perlin Noise
+- [x] Vectors:
+  - Understanding Vectors (OPENRDNR Guide)
+    - Increased the point number to 1000
+    - Added screenshot functionality (sue space to capture)
 
 License
 -------
