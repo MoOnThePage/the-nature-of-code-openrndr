@@ -3,14 +3,18 @@
  * practicing the GUI to add controls to the program
  */
 
-// TODO: https://guide.openrndr.org/interaction/userInterfaces.html
+// TODO: Add color Controls to the GUI
+// TODO: try to understand how to change the layout https://guide.openrndr.org/interaction/userInterfaces.html
 package vectors
 
 import org.openrndr.application
 import org.openrndr.color.ColorRGBa
+import org.openrndr.extensions.Screenshots
 import org.openrndr.math.Polar
+import org.openrndr.math.Vector2
 import org.openrndr.panel.ControlManager
 import org.openrndr.panel.elements.Range
+import org.openrndr.panel.elements.button
 import org.openrndr.panel.elements.slider
 import org.openrndr.panel.layout
 
@@ -25,35 +29,88 @@ fun main() = application {
 
     program {
         var num = 100
+        var turnsDistance = 3.0 // Controls distance between turns
+        var rotationDensity = 10.0 // Controls density of rotation (in degrees)
+
+        // Initial center position variables
+        var centerX = width / 2.0
+        var centerY = height / 2.0
+
+        // instantiate the screenshot extension to reference it
+        val screenshots = Screenshots()
+
         extend(ControlManager()) {
             layout {
                 slider {
                     label = "Number of Points"
-                    range = Range(1.0, 1000.0)
+                    range = Range(1.0, 2000.0)
                     value = 100.0
                     precision = 0
                     events.valueChanged.listen {
-                        println("the new value is ${it.newValue}")
                         num = it.newValue.toInt()
+                    }
+                }
+
+                slider {
+                    label = "Distance between turns"
+                    range = Range(1.0, 100.0)
+                    value = 3.0
+                    precision = 0
+                    events.valueChanged.listen {
+                        turnsDistance = it.newValue
+                    }
+                }
+
+                slider {
+                    label = "Density of rotation"
+                    range = Range(1.0, 100.0)
+                    value = 10.0
+                    precision = 0
+                    events.valueChanged.listen {
+                        rotationDensity = it.newValue
+                    }
+                }
+
+                slider {
+                    label = "X Position"
+                    range = Range(0.0, width.toDouble())
+                    value = centerX
+                    precision = 1
+                    events.valueChanged.listen {
+                        centerX = it.newValue
+                    }
+                }
+
+                slider {
+                    label = "Y Position"
+                    range = Range(0.0, height.toDouble())
+                    value = centerY
+                    precision = 1
+                    events.valueChanged.listen {
+                        centerY = it.newValue
+                    }
+                }
+
+                button{
+                    label = "Take Screenshot"
+                    events.clicked.listen {
+                        screenshots.trigger()
                     }
                 }
             }
         }
 
+        extend(screenshots)
         extend {
 
-//            val center = drawer.bounds.center
-//
-//            // Generate spiral starting at radius = 0, angle = 0
-//            val points = List(num) { i ->
-//                val radius = i * 3.0       // Controls distance between turns
-//                val angle = i * 10.0       // Controls density of rotation (in degrees)
-//
-//                center + Polar(angle, radius).cartesian
-//            }
+            val center = Vector2(centerX, centerY)
 
-            val points = List(num) {
-                drawer.bounds.center + Polar(it * 5.0, it + 100.0).cartesian // Since drawing operations don’t accept Polar or Spherical coordinates
+            // Generate spiral starting at radius = 0, angle = 0
+            val points = List(num) { i ->
+                val radius = i * turnsDistance
+                val angle = i * rotationDensity
+
+                center + Polar(angle, radius).cartesian
             }
 
             drawer.clear(ColorRGBa.WHITE)
