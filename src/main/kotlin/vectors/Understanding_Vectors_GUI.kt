@@ -37,7 +37,12 @@ private val exportFormats = listOf(
 // Right-button presses inside this left strip belong to the panel, not the artwork.
 private const val PANEL_STRIP = 240.0
 
-fun main() = application {
+// <user home>/Pictures/BG_Exports
+// Works for any user and any OS: resolve() uses the correct path separator.
+private val exportDir: File = File(System.getProperty("user.home"), "Pictures")
+    .resolve("BG_Exports")
+
+fun runVectorsGui() = application {
     configure {
         width = 1080 / 2
         height = 1920 / 2
@@ -147,14 +152,14 @@ fun main() = application {
 
                 // Safe file name (no ":" or other characters Windows rejects)
                 val safeName = format.label.replace(Regex("[^A-Za-z0-9]+"), "_").trim('_')
-                File("exports").mkdirs()
-                val file = File("exports/${safeName}_${System.currentTimeMillis()}.png")
+                exportDir.mkdirs()
+                val file = File(exportDir, "${safeName}_${System.currentTimeMillis()}.png")
                 target.colorBuffer(0).saveToFile(file, async = false)
 
                 target.colorBuffer(0).destroy()
                 target.detachColorAttachments()
                 target.destroy()
-                println("Saved ${file.path}")
+                println("Saved ${file.absolutePath}")
             }
         }
     }
