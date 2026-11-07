@@ -2,11 +2,8 @@ package vectors
 
 import org.openrndr.application
 import org.openrndr.color.ColorRGBa
-import org.openrndr.extra.color.presets.DARK_BLUE
-import org.openrndr.extra.color.presets.DARK_GREEN
 import org.openrndr.extra.color.presets.DARK_OLIVE_GREEN
 import org.openrndr.extra.color.presets.DARK_ORANGE
-import org.openrndr.extra.color.presets.DARK_TURQUOISE
 import record
 
 
@@ -23,7 +20,7 @@ fun main() = application {
         var ySpeed = 3.0
         val radius = 16.0
 
-        record()
+//        record()
         extend {
             drawer.clear(ColorRGBa.DARK_OLIVE_GREEN)
 
