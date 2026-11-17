@@ -18,8 +18,8 @@ Features
   - Understanding Vectors GUI (OPENRDNR Guide)
     - A standalone application with controls
   - [x] Bouncing ball with no vectors
-  - [ ] Bouncing ball with Vector2
-  - [ ] Motion 101 (velocity)
+  - [x] Bouncing ball with Vector2
+  - [x] Motion 101 (velocity)
   - [ ] Motion 101 (velocity and constant acceleration)
 
 License
