@@ -3,6 +3,7 @@ package randomness
 import org.openrndr.color.ColorHSLa
 import org.openrndr.color.ColorRGBa
 import org.openrndr.extra.noise.perlin
+import org.openrndr.math.Polar
 import org.openrndr.math.Vector2
 import org.openrndr.math.map
 import kotlin.math.cos
@@ -30,14 +31,13 @@ class StarWalker(val width: Double, val height: Double) {
         val totalRadius = starRadius + noiseOffset
 
         // Convert polar coordinates (angle, radius) to (X, Y)
-        val x = center.x + cos(angle) * totalRadius
-        val y = center.y + sin(angle) * totalRadius
+        val offset = Polar(Math.toDegrees(angle), totalRadius).cartesian
 
         // Step around the star loop
         angle += 0.02
         time += 0.005
 
-        return Vector2(x, y)
+        return (center + offset)
     }
 
     fun color(): ColorRGBa {
