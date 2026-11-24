@@ -20,7 +20,9 @@ Features
   - [x] Bouncing ball with no vectors
   - [x] Bouncing ball with Vector2
   - [x] Motion 101 (velocity)
-  - [ ] Motion 101 (velocity and constant acceleration)
+  - [x] Motion 101 (velocity and constant acceleration)
+  - [ ] Accelerating towards the mouse
+  - [ ] Array of movers accelerating towards the mouse
 
 License
 -------

@@ -109,7 +109,7 @@ fun main() = application {
         }
 
         // Uncomment to record (must be called before extend { }).
-        record(10.0)
+//        record(10.0)
 
         var lastSeconds = 0.0
 
